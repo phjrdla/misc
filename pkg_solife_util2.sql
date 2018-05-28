@@ -153,12 +153,16 @@ create or replace package body solife_util2 as
   
   procedure lockUsers( schema varchar2, schemas2exclude varchar2, doit boolean default false ) is
   begin
+     sys.dbms_system.ksdwrt(3,'lockUsers starts');
      abstract_principal_users( schema, 'LOCK', schemas2exclude, doit );
+     sys.dbms_system.ksdwrt(3,'lockUsers ended');
   end lockUsers;
   
   procedure unlockUsers( schema varchar2, doit boolean default false ) is
   begin
+     sys.dbms_system.ksdwrt(3,'unlockUsers starts');
      abstract_principal_users( schema, 'UNLOCK', '', doit );
+     sys.dbms_system.ksdwrt(3,'unlockUsers ended');
   end unlockUsers;
   
   procedure killSessions ( doit boolean default false ) is
@@ -186,12 +190,13 @@ create or replace package body solife_util2 as
        WHERE username not in ('SYS','SYSTEM','DBSNMP','OPCON','OPCONAP')
        ORDER BY USERNAME; 
       
-    begin    
+    begin 
       -- Current number of sessions 
       execute immediate 'select count(1) from v$session ' into cnt;
       dbms_output.put_line('Current number of sessions is '||to_char(cnt));
            
       -- List and kill sessions
+      sys.dbms_system.ksdwrt(3,'killSessions starts');
       OPEN c_sessions; 
         LOOP 
           FETCH c_sessions into c_username, c_sid, c_serial, c_status, c_taddr; 
@@ -232,8 +237,9 @@ create or replace package body solife_util2 as
             msg := 'Session '||''''||to_char(c_sid)||','||to_char(c_serial)||''' for '||c_username||' was terminated';
             dbms_output.put_line(msg);
           end if;
-        END LOOP; 
+        END LOOP;
       CLOSE c_sessions;
+      sys.dbms_system.ksdwrt(3,'killSessions ended');
    
       -- After killing sessions
       display_mode(doit);

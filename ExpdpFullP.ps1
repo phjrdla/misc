@@ -67,6 +67,7 @@ write-host " directoryName is $directoryName"
 write-host "  dumpfileName is $dumpfileName"
 write-host "      parallel is $parallel"
 write-host "       content is $content"
+write-host "      coherent is $coherent"
 write-host "  estimateOnly is $estimateOnly"
 
 $thisScript = $MyInvocation.MyCommand
@@ -123,14 +124,14 @@ ESTIMATE_ONLY=YES
 "@
 }
 
-if ( $coherent -eq 'Y' ) {
- 'FLASHBACK_TIME=systimestamp' >> $parfile
-}
+#if ( $coherent -eq 'Y' ) {
+  "FLASHBACK_TIME=systimestamp" >> $parfile_txt "FLASHBACK_TIME=systimestamp"
+#}
 
 write-host "parfile is $parfile"
 $parfile_txt | Out-File $parfile -encoding ascii
 Write-Host "`nexpdp parameter file content"
 gc $parfile
-expdp $cnx parfile=$parfile
+#expdp $cnx parfile=$parfile
 
 #expdp 2>&1 `'$cnx`' parfile=$parfile | %{ "$_" }

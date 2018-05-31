@@ -223,8 +223,12 @@ create or replace package body solife_util2 as
             execute immediate cmd;
             exception
                 when others then
+				  -- ORA-00030: User session ID does not exist
                   if SQLCODE = -30 then
                     continue; -- suppreses ORA-00030 exception
+				  -- ORA-00031: User session marked for kill
+				  elsif SQLCODE = -31 then
+				    continue; -- suppreses ORA-00031 exception
                   else
                     v_code := SQLCODE;
                     v_errm := SUBSTR(SQLERRM, 1, 64);

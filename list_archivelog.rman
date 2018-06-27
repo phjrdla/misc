@@ -1,0 +1,2 @@
+connect target /;
+list archivelog all;

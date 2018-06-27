@@ -3,9 +3,6 @@ duplicate target database
   from active database
   dorecover
   spfile
-    set db_unique_name = 'orlsol05_stby'
-    set db_file_name_convert = '/qa1/','/qa2/'
-    set log_file_name_convert = '/qa1/','/qa2/'
-    set job_queue_processes = '0'
+    set db_unique_name='orlsol05_stby'
   nofilenamecheck;
   

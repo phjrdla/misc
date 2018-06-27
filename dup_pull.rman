@@ -1,0 +1,8 @@
+echo set on
+ run {
+  allocate channel c1 device type disk;
+  allocate channel c2 device type disk;
+  allocate auxiliary channel a1 device type disk;
+  allocate auxiliary channel a2 device type disk;
+  duplicate database for standby from active database using backupset nofilenamecheck;
+}

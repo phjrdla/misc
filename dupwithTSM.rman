@@ -1,0 +1,14 @@
+run {
+allocate auxiliary channel t1 DEVICE TYPE 'SBT_TAPE' PARMS  'ENV=(tdpo_optfile=d:\oracle\orlsol05\config\tdpo_orlsol05.opt)';
+DUPLICATE TARGET DATABASE
+for standby
+device type sbt
+spfile
+  set db_unique_name='orlsol05_stby'
+  set db_file_name_convert='/ORLSOL05','/ORLSOL05_STDBY'
+  set log_file_name_convert='/ORLSOL05','/ORLSOL05_STDBY'
+dorecover
+nofilenamecheck;
+}
+
+

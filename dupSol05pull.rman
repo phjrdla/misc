@@ -1,0 +1,19 @@
+run{
+allocate channel prmy1 type disk;
+allocate channel prmy2 type disk;
+allocate auxiliary channel aux1 type disk;
+allocate auxiliary channel aux2 type disk;
+allocate auxiliary channel aux3 type disk;
+allocate auxiliary channel aux4 type disk;
+DUPLICATE DATABASE
+for standby
+FROM ACTIVE DATABASE
+spfile
+  set db_unique_name='orlsol05_stby'
+  set db_file_name_convert='/ORLSOL05','/ORLSOL05_STDBY'
+  set log_file_name_convert='/ORLSOL05','/ORLSOL05_STDBY'
+dorecover
+USING BACKUPSET
+section size 500M
+nofilenamecheck
+;}

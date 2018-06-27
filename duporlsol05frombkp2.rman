@@ -1,0 +1,10 @@
+run
+{
+allocate auxiliary channel c1 device type sbt;
+duplicate target database
+  for standby
+  dorecover
+  spfile
+    set db_unique_name="orlsol05_stby"
+  nofilenamecheck;
+}

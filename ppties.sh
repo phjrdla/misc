@@ -4,7 +4,11 @@
 # select * from v$transportable_platform; 
 #
 
-tablespaces=$(sqlplus -s system/Qmx0225_nnzdev <<!
+#cnx='system/Qmx0225_nnzdev'
+cnx='/ as sysdba'
+
+tablespaces=$(sqlplus -s $cnx <<!
+set timing off
 set pages 0
 set lines 200
 set trimspool on
@@ -22,7 +26,7 @@ order by 1
 for ts in $tablespaces
 do
   (( i += 1 ))
-  print "C'est la cochonnerie $i : $ts"
+  print "Tablespace $i is $ts"
   if (( i == 1 ))
   then  
     ts_list="$ts"

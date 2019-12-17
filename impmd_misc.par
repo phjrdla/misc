@@ -1,0 +1,6 @@
+include=user,role
+directory=tmpdir
+dumpfile=expmd.dmp
+logfile=impmd_user.log
+sqlfile=impmd_user.sql
+logtime=all

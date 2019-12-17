@@ -1,0 +1,11 @@
+#include=user,role,db_link,synonym,package
+#exclude=schema:"LIKE 'SYS%'"
+#exclude=tablespace
+full=Y
+include=user,system_grant
+remap_tablespace=USERS:USERS_TMP,EXAMPLE:EXAMPLE_TMP
+directory=tmpdir
+dumpfile=expmd.dmp
+logfile=impmd_user.log
+sqlfile=impmd_user.sql
+logtime=all

@@ -1,0 +1,8 @@
+full=y
+content=metadata_only
+directory=tmpdir
+dumpfile=expmd.dmp
+logfile=expmd.log
+exclude=statistics
+reuse_dumpfiles=Y
+logtime=all

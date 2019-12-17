@@ -1,0 +1,6 @@
+schemas=APPL_SHARED_OBJS
+directory=tmpdir
+dumpfile=expmd.dmp
+logfile=impmd.log
+sqlfile=impmd_schemas.sql
+logtime=all

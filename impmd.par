@@ -1,0 +1,6 @@
+full=y
+directory=tmpdir
+dumpfile=expmd.dmp
+logfile=impmd.log
+sqlfile=impmd.sql
+logtime=all

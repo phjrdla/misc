@@ -1,0 +1,7 @@
+dumpfile=xttdump.dmp
+directory=TMPDIR
+#statistics=NONE
+transport_tablespaces=USERS,EXAMPLE
+transport_full_check=y
+logfile=tts_export.log
+reuse_dumpfiles=YES

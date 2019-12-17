@@ -1,0 +1,6 @@
+dumpfile=xttdump.dmp
+directory=TMPDIR
+#statistics=NONE
+logfile=tts_import.log
+sqlfile=tts_import.sql
+transport_datafiles='+DATA/OFDB/DATAFILE/example.533.1027250213','+DATA/OFDB/DATAFILE/users.302.1027250145'
